@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.ITestContext;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 import pages.LoginPage;
@@ -11,6 +13,8 @@ import pages.ProductsPage;
 
 import java.time.Duration;
 import java.util.HashMap;
+
+import static tests.AllureUtils.takeScreenshot;
 
 @Listeners(TestListener.class)
 public class BaseTest {
@@ -21,8 +25,9 @@ public class BaseTest {
     ProductsPage productsPage;
 
     @Parameters({"browser"})
-    @BeforeMethod (alwaysRun = true)
-    public void setup(@Optional("chrome") String browser) {
+    @BeforeMethod (alwaysRun = true, description = "Настройка драйвера")
+    public void setup(@Optional("chrome") String browser, ITestContext context) {
+        context.setAttribute("driver", driver);
         softAssert = new SoftAssert();
         if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
@@ -49,8 +54,11 @@ public class BaseTest {
         productsPage = new ProductsPage(driver);
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void tearDown() {
+    @AfterMethod(alwaysRun = true, description = "Закрытие браузера")
+    public void tearDown(ITestResult result) {
+        if (ITestResult.FAILURE == result.getStatus()) {
+            takeScreenshot(driver);
+        }
         driver.quit();
     }
 }
