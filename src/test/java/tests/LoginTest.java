@@ -19,10 +19,10 @@ public class LoginTest extends BaseTest {
     @Issue("ITM-1-4")
     @Description("Пользователь не может войти на сайт,если поле пароль не заполнено. Пользователь получает уведомление об ошибке.")
     public void checkLoginWithoutPassword() {
-        loginPage.open();
-        loginPage.login("standard_user", "");
+        loginPage.open()
+                 .login("standard_user", "");
         Assert.assertEquals(loginPage.getErrorMessage(),
-                "Epic sadface: Password is required1",
+                "Epic sadface: Password is required",
                 "Сообщение об ошибке");
     }
 
