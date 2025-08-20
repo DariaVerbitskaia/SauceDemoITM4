@@ -5,6 +5,10 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 
 public class ProductsPage extends BasePage {
@@ -28,10 +32,11 @@ public class ProductsPage extends BasePage {
 
     @Step("Получение Заголовка с открывшейся страницы с продуктами")
     public boolean isPageOpened() {
-        return driver.findElement(TITLE).isDisplayed();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // ждём до 10 секунд
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(TITLE));
+        return element.isDisplayed();
     }
-
-
+    
     @Step("Добавление товара в корзину со страницы товаров")
     public boolean addToCart() {
         driver.findElement(ADD_BUTTON).click();

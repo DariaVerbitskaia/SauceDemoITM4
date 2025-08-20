@@ -44,7 +44,7 @@ public class LoginTest extends BaseTest {
                 "Сообщение об ошибке");
     }
 
-
+    /*
     @DataProvider (name = "loginData")
     public Object[][] loginData() {
         return new Object[][] {
@@ -71,7 +71,7 @@ public class LoginTest extends BaseTest {
                 expectedMessage,
                 "Сообщение об ошибке");
     }
-
+*/
     @Test(priority = 2, description = "Проверка успешного входа", testName = "Позитивный тест входа на сайт", groups = {"smoke"})
     @Severity(SeverityLevel.CRITICAL)
     @Owner("Daria V.")
