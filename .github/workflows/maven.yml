@@ -20,8 +20,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      USER: ${{secrets.SD_USER}}
-      PASSWORD: ${{secrets.SD_PASSWORD}}
+      SD_USER_ENV: ${{secrets.SD_USER}}
+      SD_PASSWORD_ENV: ${{secrets.SD_PASSWORD}}
 
     steps:
     - name: Checkout
@@ -33,4 +33,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Run tests
-      run: mvn clean test -Duser=$USER -Dpassword=$PASSWORD
+      run: mvn clean test -Duser=$SD_USER_ENV -Dpassword=$SD_PASSWORD_ENV
