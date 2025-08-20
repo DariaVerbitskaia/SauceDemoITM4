@@ -1,0 +1,8 @@
+"BROKEN","EPIC","FAILED","FEATURE","PASSED","SKIPPED","STORY","UNKNOWN"
+"0","Login Pge","1","Login","0","0","Login without password","0"
+"1","Product Page","0","Products","0","0","Context","0"
+"0","Login Page","2","Login","1","0","Login with Negative value","0"
+"3","Product Page","0","Products","0","0","Remove from cart","0"
+"1","Login Pge","0","Login","0","0","Success Login","0"
+"2","Product Page","0","Products","0","0","Add to cart","0"
+"0","Login Page","1","Login","0","0","Login without Username","0"
