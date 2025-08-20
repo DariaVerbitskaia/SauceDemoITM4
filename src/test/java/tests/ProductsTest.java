@@ -19,7 +19,7 @@ public class ProductsTest extends BaseTest{
     @Description("Пользователь может добавить товар в корзину со страницы товаров.")
     public void checkItemAddToCart() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.isPageOpened();
         productsPage.addToCart();
     }
@@ -36,7 +36,7 @@ public class ProductsTest extends BaseTest{
     @Description("Пользователь может удалить товар из корзины со страницы товаров не переходя в саму корзину.")
     public void checkItemRemoveFromCart() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.isPageOpened();
         productsPage.addToCart();
         productsPage.removeFromCart();
@@ -54,7 +54,7 @@ public class ProductsTest extends BaseTest{
     @Description("Пользователь может добавить товар в корзину с карточки товара.")
     public void checkItemAddToCartFromItemPage() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.isPageOpened();
         productsPage.openItemCart();
         productsPage.addToCartFromItemPage();
@@ -72,7 +72,7 @@ public class ProductsTest extends BaseTest{
     @Description("Пользователь может удалить товар из корзины с карточки товара не переходя в саму корзину.")
     public void checkItemRemoveFromCartFromItemPage() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.isPageOpened();
         productsPage.openItemCart();
         productsPage.addToCartFromItemPage();
@@ -91,7 +91,7 @@ public class ProductsTest extends BaseTest{
     @Description("Пользователь может переходить между страницей товаров и карточкой продукта.")
     public void checkNavigationBetweenItemAndProducts() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.isPageOpened();
         productsPage.openItemCart();
         productsPage.returnFromItemPageToProductsPage();
@@ -110,7 +110,7 @@ public class ProductsTest extends BaseTest{
     @Description("Проверка прогрузки контента.")
     public void checkTitleOnProductPage() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.isPageOpened();
         String actualTitle = productsPage.getPageTitle();
         Assert.assertEquals(actualTitle, "Products", "Заголовок страницы некорректный");

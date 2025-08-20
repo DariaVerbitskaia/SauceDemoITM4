@@ -20,7 +20,7 @@ public class LoginTest extends BaseTest {
     @Description("Пользователь не может войти на сайт,если поле пароль не заполнено. Пользователь получает уведомление об ошибке.")
     public void checkLoginWithoutPassword() {
         loginPage.open()
-                 .login("standard_user", "");
+                 .login(user, "");
         Assert.assertEquals(loginPage.getErrorMessage(),
                 "Epic sadface: Password is required",
                 "Сообщение об ошибке");
@@ -38,13 +38,12 @@ public class LoginTest extends BaseTest {
     @Description("Пользователь не может войти на сайт,если поле Имя не заполнено. Пользователь получает уведомление об ошибке.")
     public void checkLoginWithoutUsername() {
         loginPage.open();
-        loginPage.login("", "secret_sauce");
+        loginPage.login("", password);
         Assert.assertEquals(loginPage.getErrorMessage(),
                 "Epic sadface: Username is required",
                 "Сообщение об ошибке");
     }
 
-    /*
     @DataProvider (name = "loginData")
     public Object[][] loginData() {
         return new Object[][] {
@@ -71,7 +70,7 @@ public class LoginTest extends BaseTest {
                 expectedMessage,
                 "Сообщение об ошибке");
     }
-*/
+
     @Test(priority = 2, description = "Проверка успешного входа", testName = "Позитивный тест входа на сайт", groups = {"smoke"})
     @Severity(SeverityLevel.CRITICAL)
     @Owner("Daria V.")
@@ -84,7 +83,7 @@ public class LoginTest extends BaseTest {
     @Description("Успешный вход пользователя на сайт.")
     public void checkLogin() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         assertTrue(productsPage.isPageOpened());
     }
 }
