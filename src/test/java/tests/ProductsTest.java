@@ -113,6 +113,6 @@ public class ProductsTest extends BaseTest{
         loginPage.login("standard_user", "secret_sauce");
         productsPage.isPageOpened();
         String actualTitle = productsPage.getPageTitle();
-        Assert.assertEquals(actualTitle, "Products1", "Заголовок страницы некорректный");
+        Assert.assertEquals(actualTitle, "Products", "Заголовок страницы некорректный");
     }
 }

@@ -40,7 +40,7 @@ public class LoginTest extends BaseTest {
         loginPage.open();
         loginPage.login("", "secret_sauce");
         Assert.assertEquals(loginPage.getErrorMessage(),
-                "Epic sadface: Username is required1",
+                "Epic sadface: Username is required",
                 "Сообщение об ошибке");
     }
 
